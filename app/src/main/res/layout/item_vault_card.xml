@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/TrustCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="18dp"
+    app:rippleColor="@color/accent_glow">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <!-- Category Icon Container -->
+        <FrameLayout
+            android:id="@+id/icon_container"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_circle_icon">
+
+            <ImageView
+                android:id="@+id/iv_item_icon"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_key"
+                app:tint="@color/cat_password" />
+        </FrameLayout>
+
+        <!-- Title, Username & Category Label -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_item_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/text_primary"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                tools:text="Google Workspace" />
+
+            <TextView
+                android:id="@+id/tv_item_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                tools:text="user@gmail.com" />
+        </LinearLayout>
+
+        <!-- Attachment indicator icon -->
+        <ImageView
+            android:id="@+id/iv_has_document"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginEnd="6dp"
+            android:src="@drawable/ic_document"
+            android:visibility="gone"
+            app:tint="@color/accent_cyan" />
+
+        <!-- Quick Copy Secret / Password Button -->
+        <ImageButton
+            android:id="@+id/btn_quick_copy"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Copy Secret"
+            android:padding="8dp"
+            android:src="@drawable/ic_copy"
+            app:tint="@color/accent_cyan" />
+
+        <!-- Quick Delete Button -->
+        <ImageButton
+            android:id="@+id/btn_delete_item"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="4dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Delete"
+            android:padding="8dp"
+            android:src="@drawable/ic_delete"
+            app:tint="@color/text_tertiary" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

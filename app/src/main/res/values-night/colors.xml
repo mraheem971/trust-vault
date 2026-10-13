@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="window_background">#0B111E</color>
+    <color name="card_background">#162238</color>
+    <color name="surface_card">#131C2E</color>
+    <color name="surface_stroke">#2A3B53</color>
+    <color name="text_primary">#F8FAFC</color>
+    <color name="text_secondary">#94A3B8</color>
+    <color name="text_tertiary">#64748B</color>
+    <color name="bottom_nav_bg">#10192A</color>
+</resources>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_coordinator"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/window_background">
+
+    <!-- Container for dynamic views/fragments (Dashboard, Generator, Backup, Settings) -->
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="72dp" />
+
+    <!-- Lock Overlay Screen (Biometric & Master App PIN - Rejects phone passwords unless allowed) -->
+    <FrameLayout
+        android:id="@+id/lock_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/navy_bg"
+        android:elevation="30dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingHorizontal="28dp">
+
+            <ImageView
+                android:layout_width="88dp"
+                android:layout_height="88dp"
+                android:background="@drawable/bg_circle_icon"
+                android:backgroundTint="#2606B6D4"
+                android:padding="22dp"
+                android:src="@drawable/ic_shield"
+                app:tint="@color/accent_cyan" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/app_name"
+                android:textColor="@color/text_primary"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Standalone Protected Security Vault"
+                android:textColor="@color/accent_cyan"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <!-- Phone lock disallowed notice banner -->
+            <TextView
+                android:id="@+id/tv_phone_lock_notice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_search_bar"
+                android:backgroundTint="#2638BDF8"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp"
+                android:text="🛡️ Phone screen-lock passwords blocked by default"
+                android:textColor="@color/accent_blue_light"
+                android:textSize="11sp" />
+
+            <!-- Biometric Unlock Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_unlock_biometric"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="28dp"
+                android:backgroundTint="@color/primary"
+                android:text="Biometric Unlock"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:cornerRadius="16dp"
+                app:icon="@drawable/ic_fingerprint"
+                app:iconGravity="textStart"
+                app:iconTint="@color/accent_cyan" />
+
+            <!-- Master PIN Input Card (Dedicated to Trust Vault) -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/TrustCard.Flat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="18dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_lock_pin"
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Enter Vault Master PIN"
+                        app:boxStrokeColor="@color/accent_cyan"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleTint="@color/accent_cyan">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_lock_pin"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionDone"
+                            android:inputType="numberPassword"
+                            android:textColor="@color/text_primary" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_unlock_pin"
+                        style="@style/Widget.Material3.Button.TonalButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Unlock with Vault PIN"
+                        android:textColor="@color/accent_cyan"
+                        app:cornerRadius="14dp"
+                        app:icon="@drawable/ic_lock"
+                        app:iconTint="@color/accent_cyan" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Floating Action Add Button -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="88dp"
+        android:contentDescription="Add to Vault"
+        app:backgroundTint="@color/accent_cyan"
+        app:elevation="8dp"
+        app:fabSize="normal"
+        app:rippleColor="@color/white"
+        app:srcCompat="@drawable/ic_add"
+        app:tint="@color/navy_bg" />
+
+    <!-- Bottom Navigation Bar with Rounded Top Border -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/bg_bottom_nav"
+        app:elevation="12dp"
+        app:itemIconSize="22dp"
+        app:itemIconTint="@color/nav_item_tint"
+        app:itemRippleColor="@color/accent_glow"
+        app:itemTextColor="@color/nav_item_tint"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_nav_menu" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

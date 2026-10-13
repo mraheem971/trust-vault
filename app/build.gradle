@@ -1,0 +1,68 @@
+plugins {
+    alias(libs.plugins.android.application)
+}
+
+android {
+    namespace 'com.secure.trust_vault'
+    compileSdk {
+        version = release(37)
+    }
+
+    defaultConfig {
+        applicationId "com.secure.trust_vault"
+        minSdk 24
+        targetSdk 37
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            optimization {
+                enable false
+            }
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+}
+
+configurations.all {
+    resolutionStrategy {
+        force "androidx.lifecycle:lifecycle-livedata:2.6.1"
+        force "androidx.lifecycle:lifecycle-viewmodel:2.6.1"
+        force "androidx.lifecycle:lifecycle-runtime:2.6.1"
+        force "androidx.lifecycle:lifecycle-common:2.6.1"
+        force "androidx.lifecycle:lifecycle-livedata-core:2.6.1"
+    }
+}
+
+dependencies {
+    implementation libs.activity.ktx
+    implementation libs.appcompat
+    implementation libs.constraintlayout
+    implementation libs.material
+
+    // Room Database
+    implementation libs.room.runtime
+    annotationProcessor libs.room.compiler
+
+    // Biometric
+    implementation libs.biometric
+
+    // Lifecycle MVVM
+    implementation libs.lifecycle.viewmodel
+    implementation libs.lifecycle.livedata
+    implementation libs.lifecycle.runtime
+
+    // Gson for JSON models / backup export
+    implementation libs.gson
+
+    testImplementation libs.junit
+    androidTestImplementation libs.espresso.core
+    androidTestImplementation libs.ext.junit
+}

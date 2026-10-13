@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Trust Vault</string>
+    <string name="tagline">Military-grade offline vault</string>
+    <string name="welcome_title">Welcome back,</string>
+    <string name="welcome_subtitle">Your digital assets are AES-256 encrypted</string>
+    
+    <!-- Dashboard Overview -->
+    <string name="vault_status_title">Vault Protected</string>
+    <string name="vault_status_sub">Hardware Keystore &amp; App PIN Active</string>
+    <string name="total_items">Total Items</string>
+    <string name="security_health">Security Health</string>
+    <string name="health_optimal">Optimal (100%)</string>
+
+    <!-- Categories & Sections -->
+    <string name="cat_passwords">Passwords</string>
+    <string name="cat_cards">Payment Cards</string>
+    <string name="cat_notes">Private Notes</string>
+    <string name="cat_documents">Documents</string>
+    <string name="cat_id_cards">ID &amp; Passports</string>
+    <string name="cat_personal">Personal Data</string>
+    <string name="categories_title">Vault Categories</string>
+    <string name="recently_added_title">Recent Vault Items</string>
+    <string name="view_all">View All</string>
+
+    <!-- Navigation -->
+    <string name="nav_vault">Vault</string>
+    <string name="nav_generator">Generator</string>
+    <string name="nav_backup">Backup</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Generator -->
+    <string name="gen_title">Password Generator</string>
+    <string name="gen_length">Password Length:</string>
+    <string name="gen_include_upper">Uppercase Letters (A-Z)</string>
+    <string name="gen_include_lower">Lowercase Letters (a-z)</string>
+    <string name="gen_include_numbers">Numbers (0-9)</string>
+    <string name="gen_include_symbols">Symbols (!@#$%^&amp;*)</string>
+    <string name="gen_generate_btn">Generate New Password</string>
+    <string name="gen_copy_btn">Copy to Clipboard</string>
+    <string name="copied_toast">Password copied to secure clipboard!</string>
+
+    <!-- Search & Filters -->
+    <string name="search_hint">Search credentials, cards, notes, documents...</string>
+    <string name="empty_items">No items in this section.\nTap + to add your data securely.</string>
+
+    <!-- Add / Edit Dialog -->
+    <string name="add_new_title">Add to Vault</string>
+    <string name="item_title_hint">Title / Name of Information (e.g. Passport, Chase)</string>
+    <string name="item_category_hint">Category / Section</string>
+    <string name="item_username_hint">Username / ID Number / Account Name</string>
+    <string name="item_secret_hint">Password / Secret / Number / Code</string>
+    <string name="item_extra_hint">Additional Details, Information or Notes</string>
+    <string name="save_button">Save Securely</string>
+    <string name="cancel_button">Cancel</string>
+
+    <!-- Document Upload & Scan -->
+    <string name="upload_document">Upload Document</string>
+    <string name="scan_document">Scan with Camera</string>
+    <string name="attached_document">Attached Document:</string>
+    <string name="remove_attachment">Remove</string>
+
+    <!-- Security, Lock & Master PIN -->
+    <string name="backup_title">Encrypted Backup &amp; Restore</string>
+    <string name="backup_export_btn">Export Encrypted Backup</string>
+    <string name="backup_import_btn">Import &amp; Restore Backup</string>
+    <string name="lock_now_btn">Lock Vault Now</string>
+    <string name="auth_required_title">Vault Authentication</string>
+    <string name="auth_subtitle">Authenticate using Biometrics or Master PIN to access Trust Vault</string>
+    <string name="auth_failed">Authentication failed. Access denied.</string>
+    <string name="enter_master_pin">Enter Master Vault PIN</string>
+    <string name="set_master_pin">Set Master Vault PIN</string>
+    <string name="phone_password_disallowed">Phone lock/password is disabled for Trust Vault</string>
+</resources>

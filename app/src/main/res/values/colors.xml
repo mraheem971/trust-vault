@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Brand Primary Colors (Trust Navy & Electric Blue/Cyan) -->
+    <color name="primary">#0284C7</color>
+    <color name="primary_variant">#0369A1</color>
+    <color name="accent_cyan">#06B6D4</color>
+    <color name="accent_cyan_soft">#22D3EE</color>
+    <color name="accent_blue_light">#38BDF8</color>
+    <color name="accent_glow">#3306B6D4</color>
+    
+    <!-- Dark Navy Palette (Default Premium Theme) -->
+    <color name="navy_bg">#0B111E</color>
+    <color name="navy_surface">#131C2E</color>
+    <color name="navy_surface_variant">#1E293B</color>
+    <color name="navy_surface_glass">#801E293B</color>
+    <color name="navy_card">#162238</color>
+    <color name="navy_border">#2A3B53</color>
+    
+    <!-- Light Palette (Light Mode Support) -->
+    <color name="light_bg">#F8FAFC</color>
+    <color name="light_surface">#FFFFFF</color>
+    <color name="light_surface_variant">#F1F5F9</color>
+    <color name="light_card">#FFFFFF</color>
+    <color name="light_border">#E2E8F0</color>
+    <color name="light_text_primary">#0F172A</color>
+    <color name="light_text_secondary">#475569</color>
+    <color name="light_text_tertiary">#94A3B8</color>
+
+    <!-- Dark Text Colors -->
+    <color name="dark_text_primary">#F8FAFC</color>
+    <color name="dark_text_secondary">#94A3B8</color>
+    <color name="dark_text_tertiary">#64748B</color>
+
+    <!-- Semantic & Category Accents -->
+    <color name="cat_password">#38BDF8</color>
+    <color name="cat_password_bg">#1A38BDF8</color>
+    <color name="cat_card">#818CF8</color>
+    <color name="cat_card_bg">#1A818CF8</color>
+    <color name="cat_note">#34D399</color>
+    <color name="cat_note_bg">#1A34D399</color>
+    <color name="cat_doc">#FBBF24</color>
+    <color name="cat_doc_bg">#1AFBBF24</color>
+
+    <color name="status_success">#10B981</color>
+    <color name="status_warning">#F59E0B</color>
+    <color name="status_danger">#EF4444</color>
+    <color name="danger_bg">#1AEF4444</color>
+
+    <!-- Neutral basics -->
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="transparent">#00000000</color>
+    
+    <!-- Dynamic theme aliasing default to Dark Navy -->
+    <color name="window_background">@color/navy_bg</color>
+    <color name="card_background">@color/navy_card</color>
+    <color name="surface_card">@color/navy_surface</color>
+    <color name="surface_stroke">@color/navy_border</color>
+    <color name="text_primary">@color/dark_text_primary</color>
+    <color name="text_secondary">@color/dark_text_secondary</color>
+    <color name="text_tertiary">@color/dark_text_tertiary</color>
+    <color name="bottom_nav_bg">#10192A</color>
+</resources>

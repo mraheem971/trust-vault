@@ -1,0 +1,41 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Trustvault" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Brand Colors -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_variant</item>
+        <item name="colorSecondary">@color/accent_cyan</item>
+        <item name="android:statusBarColor">@color/window_background</item>
+        <item name="android:navigationBarColor">@color/bottom_nav_bg</item>
+        <item name="android:windowBackground">@color/window_background</item>
+    </style>
+
+    <style name="Theme.Trustvault" parent="Base.Theme.Trustvault" />
+
+    <!-- Premium Rounded Card Style -->
+    <style name="TrustCard" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardCornerRadius">20dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/surface_stroke</item>
+        <item name="cardBackgroundColor">@color/card_background</item>
+    </style>
+
+    <style name="TrustCard.Flat" parent="Widget.Material3.CardView.Filled">
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="strokeColor">@color/surface_stroke</item>
+        <item name="cardBackgroundColor">@color/surface_card</item>
+    </style>
+
+    <!-- Dialog Style -->
+    <style name="TrustDialogTheme" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="shapeAppearanceMediumComponent">@style/RoundedDialogShape</item>
+        <item name="colorSurface">@color/surface_card</item>
+    </style>
+
+    <style name="RoundedDialogShape" parent="ShapeAppearance.Material3.MediumComponent">
+        <item name="cornerSize">24dp</item>
+    </style>
+</resources>
