@@ -38,4 +38,10 @@
     <style name="RoundedDialogShape" parent="ShapeAppearance.Material3.MediumComponent">
         <item name="cornerSize">24dp</item>
     </style>
+
+    <!-- Bottom Navigation Custom Text and Indicator Styles -->
+    <style name="TrustBottomNavText" parent="TextAppearance.Material3.LabelMedium">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

@@ -94,6 +94,10 @@ public class MainActivity extends AppCompatActivity {
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main_coordinator), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0);
+            if (bottomNav != null) {
+                // Ensure bottom navigation respects navigation bar height so labels are never hidden
+                bottomNav.setPadding(0, 0, 0, systemBars.bottom);
+            }
             return insets;
         });
 
