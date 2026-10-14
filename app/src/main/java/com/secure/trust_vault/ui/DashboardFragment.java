@@ -106,24 +106,7 @@ public class DashboardFragment extends Fragment implements VaultItemAdapter.OnIt
             tvFilterStatus.setText(R.string.view_all);
         });
 
-        // Security Setup Banner configuration (Guides user to configure PIN/Biometrics)
-        View securityBanner = view.findViewById(R.id.card_security_setup_banner);
-        View btnSetupNow = view.findViewById(R.id.btn_setup_security_now);
         VaultPreferences prefs = new VaultPreferences(requireContext());
-
-        if (!prefs.hasMasterPin() && !prefs.isBiometricEnabled()) {
-            securityBanner.setVisibility(View.VISIBLE);
-        } else {
-            securityBanner.setVisibility(View.GONE);
-        }
-
-        if (btnSetupNow != null) {
-            btnSetupNow.setOnClickListener(v -> {
-                if (getActivity() instanceof MainActivity) {
-                    ((MainActivity) getActivity()).navigateToSettings();
-                }
-            });
-        }
 
         // Quick Lock Button in Header
         view.findViewById(R.id.btn_quick_lock).setOnClickListener(v -> {
@@ -150,22 +133,6 @@ public class DashboardFragment extends Fragment implements VaultItemAdapter.OnIt
         });
 
         observeData();
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (getView() != null) {
-            View securityBanner = getView().findViewById(R.id.card_security_setup_banner);
-            if (securityBanner != null) {
-                VaultPreferences prefs = new VaultPreferences(requireContext());
-                if (!prefs.hasMasterPin() && !prefs.isBiometricEnabled()) {
-                    securityBanner.setVisibility(View.VISIBLE);
-                } else {
-                    securityBanner.setVisibility(View.GONE);
-                }
-            }
-        }
     }
 
     private void toggleCategoryFilter(String category) {
