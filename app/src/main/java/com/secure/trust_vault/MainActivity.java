@@ -211,11 +211,11 @@ public class MainActivity extends AppCompatActivity {
             btnBiometric.setVisibility(View.VISIBLE);
         }
 
-        // Only lock on startup IF the user has configured security (Master PIN or Biometric)
-        if (preferences.hasMasterPin() || preferences.isBiometricEnabled()) {
+        // Only lock on startup IF user has enabled 'Lock on start' AND has security configured
+        if (preferences.isLockOnStartEnabled() && (preferences.hasMasterPin() || preferences.isBiometricEnabled())) {
             lockVault();
         } else {
-            // Fresh download / first-time user: Open smoothly without any lock barrier!
+            // User did not set lock or removed lock from opening/start: Open directly!
             unlockVault();
         }
     }

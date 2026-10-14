@@ -12,6 +12,7 @@ public class VaultPreferences {
     private static final String PREF_NAME = "trust_vault_prefs";
     private static final String KEY_BIOMETRIC_ENABLED = "biometric_enabled";
     private static final String KEY_AUTO_LOCK_ENABLED = "auto_lock_enabled";
+    private static final String KEY_LOCK_ON_START = "lock_on_start";
     private static final String KEY_DARK_MODE = "dark_mode_active";
     private static final String KEY_LAST_ACTIVE_TIMESTAMP = "last_active_time";
 
@@ -39,6 +40,18 @@ public class VaultPreferences {
 
     public void setAutoLockEnabled(boolean enabled) {
         prefs.edit().putBoolean(KEY_AUTO_LOCK_ENABLED, enabled).apply();
+    }
+
+    /**
+     * Determines whether the app should lock on launch/start.
+     * Default: false (user opens the app directly without any lock screen).
+     */
+    public boolean isLockOnStartEnabled() {
+        return prefs.getBoolean(KEY_LOCK_ON_START, false);
+    }
+
+    public void setLockOnStartEnabled(boolean enabled) {
+        prefs.edit().putBoolean(KEY_LOCK_ON_START, enabled).apply();
     }
 
     public boolean isDarkMode() {
@@ -83,6 +96,10 @@ public class VaultPreferences {
             // Hash with SHA-256 for secure local verification
             prefs.edit().putString(KEY_MASTER_PIN_HASH, hashString(plainPin.trim())).apply();
         }
+    }
+
+    public void removeMasterPin() {
+        prefs.edit().remove(KEY_MASTER_PIN_HASH).apply();
     }
 
     public boolean hasMasterPin() {
