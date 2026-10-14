@@ -44,11 +44,13 @@ import java.io.File;
 public class MainActivity extends AppCompatActivity {
 
     private FrameLayout lockOverlay;
+    private FrameLayout splashScreen;
     private BottomNavigationView bottomNav;
     private FloatingActionButton fabAdd;
     private VaultViewModel viewModel;
     private VaultPreferences preferences;
     private boolean isUnlocked = false;
+    private boolean isSplashFinished = false;
 
     // Document attachment & Camera capture handling
     private ActivityResultLauncher<String> documentPickerLauncher;
@@ -80,9 +82,14 @@ public class MainActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(VaultViewModel.class);
 
+        splashScreen = findViewById(R.id.splash_screen);
         lockOverlay = findViewById(R.id.lock_overlay);
         bottomNav = findViewById(R.id.bottom_navigation);
         fabAdd = findViewById(R.id.fab_add);
+
+        // Hide navigation and fab until splash animation completes
+        bottomNav.setVisibility(View.GONE);
+        fabAdd.hide();
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main_coordinator), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -93,12 +100,13 @@ public class MainActivity extends AppCompatActivity {
         setupFilePickers();
         setupNavigation();
         setupAddDialog();
-        setupAuthentication();
 
         // Default to Dashboard
         if (savedInstanceState == null) {
             loadFragment(new DashboardFragment());
         }
+
+        runSplashScreenAnimation();
     }
 
     private void setupFilePickers() {
@@ -163,6 +171,106 @@ public class MainActivity extends AppCompatActivity {
         if (bottomNav != null) {
             bottomNav.setSelectedItemId(R.id.nav_settings);
         }
+    }
+
+    private void runSplashScreenAnimation() {
+        if (splashScreen == null) {
+            setupAuthentication();
+            return;
+        }
+
+        View splashIcon = findViewById(R.id.splash_icon);
+        View splashGlow = findViewById(R.id.splash_glow);
+        View splashTitle = findViewById(R.id.splash_title);
+        View splashSubtitle = findViewById(R.id.splash_subtitle);
+        View splashProgress = findViewById(R.id.splash_progress);
+
+        // Initial setup for entrance
+        if (splashIcon != null) {
+            splashIcon.setScaleX(0.7f);
+            splashIcon.setScaleY(0.7f);
+            splashIcon.setAlpha(0f);
+        }
+        if (splashGlow != null) {
+            splashGlow.setScaleX(0.5f);
+            splashGlow.setScaleY(0.5f);
+            splashGlow.setAlpha(0f);
+        }
+        if (splashTitle != null) {
+            splashTitle.setAlpha(0f);
+            splashTitle.setTranslationY(20f);
+        }
+        if (splashSubtitle != null) {
+            splashSubtitle.setAlpha(0f);
+            splashSubtitle.setTranslationY(15f);
+        }
+        if (splashProgress != null) {
+            splashProgress.setAlpha(0f);
+        }
+
+        // 1. Icon & Glow smooth pop in with overshoot
+        if (splashIcon != null) {
+            splashIcon.animate()
+                    .scaleX(1f)
+                    .scaleY(1f)
+                    .alpha(1f)
+                    .setDuration(700)
+                    .setInterpolator(new android.view.animation.OvershootInterpolator(1.2f))
+                    .start();
+        }
+
+        if (splashGlow != null) {
+            splashGlow.animate()
+                    .scaleX(1.15f)
+                    .scaleY(1.15f)
+                    .alpha(0.85f)
+                    .setDuration(900)
+                    .setInterpolator(new android.view.animation.DecelerateInterpolator())
+                    .start();
+        }
+
+        // 2. Title & Subtitle fade in with slight upward slide
+        if (splashTitle != null) {
+            splashTitle.animate()
+                    .alpha(1f)
+                    .translationY(0f)
+                    .setStartDelay(250)
+                    .setDuration(500)
+                    .start();
+        }
+
+        if (splashSubtitle != null) {
+            splashSubtitle.animate()
+                    .alpha(1f)
+                    .translationY(0f)
+                    .setStartDelay(350)
+                    .setDuration(500)
+                    .start();
+        }
+
+        if (splashProgress != null) {
+            splashProgress.animate()
+                    .alpha(1f)
+                    .setStartDelay(450)
+                    .setDuration(400)
+                    .start();
+        }
+
+        // 3. Smooth exit transition after showcase (total ~1.8 seconds)
+        splashScreen.postDelayed(() -> {
+            splashScreen.animate()
+                    .alpha(0f)
+                    .scaleX(1.04f)
+                    .scaleY(1.04f)
+                    .setDuration(400)
+                    .setInterpolator(new android.view.animation.AccelerateDecelerateInterpolator())
+                    .withEndAction(() -> {
+                        splashScreen.setVisibility(View.GONE);
+                        isSplashFinished = true;
+                        setupAuthentication();
+                    })
+                    .start();
+        }, 1800);
     }
 
     private void setupAuthentication() {
@@ -259,7 +367,7 @@ public class MainActivity extends AppCompatActivity {
                     .withEndAction(() -> lockOverlay.setVisibility(View.GONE))
                     .start();
         }
-        if (bottomNav != null) {
+        if (isSplashFinished && bottomNav != null) {
             bottomNav.setVisibility(View.VISIBLE);
             if (bottomNav.getSelectedItemId() == R.id.nav_dashboard && fabAdd != null) {
                 fabAdd.show();
